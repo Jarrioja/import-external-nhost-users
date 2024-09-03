@@ -1,4 +1,6 @@
-import { processCSV } from "./functions/processCSV";
+import { execute } from "./functions/execute";
 import { envs } from "./config/envs";
-const { CSV_FILE_PATH } = envs;
-processCSV(CSV_FILE_PATH);
+
+const { CSV_FILE_PATH, ACTION } = envs;
+
+execute(CSV_FILE_PATH, ACTION);

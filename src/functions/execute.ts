@@ -1,6 +1,7 @@
 import fs from "fs";
 import csvParser from "csv-parser";
 import { createOrUpdate } from "./createOrUpdate";
+import { resetPassword } from "./resetPassword";
 
 export interface User {
   displayName: string;
@@ -8,7 +9,8 @@ export interface User {
 }
 
 // Leer el archivo CSV y procesar los usuarios
-export const processCSV = (filePath: string) => {
+export const execute = (filePath: string, action: string) => {
+  if (!action) throw new Error("Missing action");
   const users: User[] = [];
 
   fs.createReadStream(filePath)
@@ -24,7 +26,12 @@ export const processCSV = (filePath: string) => {
       console.log("CSV file successfully processed.");
       // Llamar a createOrUpdate para cada usuario
       users.forEach((user) => {
-        createOrUpdate(user, { elite: true });
+        if (action === "createOrUpdate") {
+          createOrUpdate(user, { elite: true });
+        }
+        if (action === "resetPassword") {
+          resetPassword(user);
+        }
       });
     });
 };

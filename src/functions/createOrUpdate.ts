@@ -4,7 +4,7 @@ import {
   UPDATE_USER_METADATA,
   CREATE_USER,
 } from "../helpers/queries";
-import { User } from "../functions/processCSV";
+import { User } from "./execute";
 
 export const createOrUpdate = async (user: User, newMetadata: object) => {
   const { email, displayName } = user;
