@@ -39,5 +39,6 @@ lib/*.js
 test/*.js
 *.map
 .env
+.env.*
 dist/
 users.csv
