@@ -2,7 +2,9 @@ import fs from "fs";
 import csvParser from "csv-parser";
 import { createOrUpdate } from "./createOrUpdate";
 import { resetPassword } from "./resetPassword";
+import { envs } from "../config/envs";
 
+const { RECOVERY_PASSWORD_URL } = envs;
 export interface User {
   displayName: string;
   email: string;
@@ -30,7 +32,7 @@ export const execute = (filePath: string, action: string) => {
           createOrUpdate(user, { elite: true });
         }
         if (action === "resetPassword") {
-          resetPassword(user);
+          resetPassword(user, RECOVERY_PASSWORD_URL);
         }
       });
     });

@@ -7,4 +7,5 @@ export const envs = {
   NHOST_ADMIN_SECRET: get("NHOST_ADMIN_SECRET").required().asString(),
   CSV_FILE_PATH: get("CSV_FILE_PATH").required().asString(),
   ACTION: get("ACTION").required().asString(),
+  RECOVERY_PASSWORD_URL: get("RECOVERY_PASSWORD_URL").required().asString(),
 };
