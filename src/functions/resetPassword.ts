@@ -3,15 +3,19 @@ import { User } from "./execute";
 
 export const resetPassword = async (
   user: User,
-  recoveryPasswordUrl: string
+  recoveryPasswordUrl?: string
 ) => {
   const { email } = user;
+  let options;
+  if (recoveryPasswordUrl) {
+    options = {
+      redirectTo: recoveryPasswordUrl,
+    };
+  }
   try {
-    const resetPasswordResponse = await nhost.auth.resetPassword({
+    await nhost.auth.resetPassword({
       email,
-      options: {
-        redirectTo: recoveryPasswordUrl,
-      },
+      options,
     });
     console.log("Password reset email sent to user:", email);
   } catch (error) {
