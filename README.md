@@ -12,6 +12,7 @@ NHOST_REGION="us-east-1"
 NHOST_ADMIN_SECRET="nhost-admin-secret"
 CSV_FILE_PATH="users.csv"
 ACTION="resetPassword" #  createOrUpdate | resetPassword
+RECOVERY_PASSWORD_URL="https://example.com/recovery-password" # Opcional
 ```
  *  En `ACTION` puedes elegir entre `createOrUpdate` o `resetPassword` para crear/actualizar los usuarios o solo resetear la contraseña.
 2. Crea un archivo `users.csv` en la raíz del proyecto con las siguientes columnas:
